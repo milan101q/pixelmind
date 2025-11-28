@@ -36,12 +36,12 @@ export const PORTFOLIO_ITEMS = [
     category: 'Nova Autoland',
     instagramUrl: 'https://www.instagram.com/reel/DRlT1gdjaO-/',
     description: ''
-  },
+     },
   {
     id: '2',
     title: 'Luxury Transportation',
     category: 'Dignity Pro Limousine',
     instagramUrl: 'https://www.instagram.com/reel/DRlbdZZjetx/',
     description: ''
-     }
+  }
 ];
