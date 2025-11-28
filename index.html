@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -46,7 +45,7 @@
     </script>
     
     <!-- Favicon Sync Script -->
-    <link id="favicon" rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/milan101q/pixelmind/refs/heads/main/Gemini_Generated_Image_6mpi0t6mpi0t6mpi.png" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='128' height='128' rx='32' fill='url(%23g)'/%3E%3Cpath d='M42 38 V90 L82 64 Z' fill='white'/%3E%3Crect x='86' y='58' width='12' height='12' rx='3' fill='white'/%3E%3Crect x='102' y='50' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3Crect x='102' y='68' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3C/svg%3E" />
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -155,8 +154,8 @@
       const ASSETS = {
         HERO_BG: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop", 
         HERO_VIDEO: "https://cdn.pixabay.com/video/2023/02/16/150993-800045265_large.mp4", // Abstract Purple/Blue Digital Flow
-        // Professional "PixelMind" Logo: Abstract Brain constructed from Rounded Pixels (Neural Grid)
-        LOGO: "https://raw.githubusercontent.com/milan101q/pixelmind/refs/heads/main/Gemini_Generated_Image_6mpi0t6mpi0t6mpi.png",
+        // Professional "Pixel Play" Logo: Play button fragmenting into pixels (Video + AI)
+        LOGO: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='128' height='128' rx='32' fill='url(%23g)'/%3E%3Cpath d='M42 38 V90 L82 64 Z' fill='white'/%3E%3Crect x='86' y='58' width='12' height='12' rx='3' fill='white'/%3E%3Crect x='102' y='50' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3Crect x='102' y='68' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3C/svg%3E",
       };
 
       const SERVICES = [
@@ -328,20 +327,24 @@
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/60 to-brand-dark z-10"></div>
               
+              {/* Floating color orbs */}
               <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
               <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-20 text-center pt-24">
+              
+              {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8 animate-float shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                 <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)] animate-pulse"></span>
                 <span className="text-sm font-semibold tracking-wide text-white uppercase">Accepting New Clients</span>
               </div>
 
+              {/* Main Heading */}
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-8 text-white drop-shadow-xl">
-                AI Video <br />
+                Business Video <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  Solutions
+                  Intelligence
                 </span>
               </h1>
 
@@ -349,6 +352,7 @@
                 We craft advanced AI video solutions that support scalable business growth.
               </p>
 
+              {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a 
                   href={LINKS.INSTAGRAM}
@@ -408,16 +412,16 @@
       };
 
       // Portfolio
-      // Helper to convert standard IG URL to Embed URL
-      const getEmbedUrl = (url) => {
-        if (!url) return '';
-        const cleanUrl = url.split('?')[0];
-        const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-        return `${baseUrl}embed`;
-      };
-
       const Portfolio = () => {
+        // Limit to first 6 items
         const displayItems = PORTFOLIO_ITEMS.slice(0, 6);
+
+        // Helper to convert standard IG URL to Embed URL
+        const getEmbedUrl = (url) => {
+          const cleanUrl = url.split('?')[0];
+          const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
+          return `${baseUrl}embed`;
+        };
 
         return (
           <section id="work" className="py-32 relative">
@@ -427,16 +431,16 @@
               
               <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
                 <div>
-                  <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Sample <br/><span className="text-purple-400">Creations</span></h2>
-                  <p className="text-xl text-gray-400 max-w-lg">
-                    Discover our portfolio of AI-generated videos, designed to captivate audiences and drive engagement.
-                  </p>
+                   <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Sample <br/><span className="text-purple-400">Creations</span></h2>
+                   <p className="text-xl text-gray-400 max-w-lg">
+                     Discover our portfolio of AI-generated videos, designed to captivate audiences and drive engagement.
+                   </p>
                 </div>
                 <a 
-                  href={LINKS.INSTAGRAM}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:border-white transition-colors"
+                   href={LINKS.INSTAGRAM}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="hidden md:flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:border-white transition-colors"
                 >
                   See all on Instagram <ArrowUpRight size={18} />
                 </a>
@@ -452,14 +456,12 @@
                       <iframe 
                         className="w-full aspect-[9/13] md:aspect-[9/14]"
                         src={getEmbedUrl(item.instagramUrl)} 
-                        allowTransparency={true}
-                        allowFullScreen={true}
+                        allowTransparency="true"
+                        allowFullScreen="true"
                         frameBorder="0"
                         scrolling="no"
                         title={item.title}
-                        style={{
-                          backgroundColor: 'white',
-                        }}
+                        style={{ backgroundColor: 'white' }}
                       ></iframe>
                     </div>
 
@@ -523,14 +525,13 @@
 
               <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
                 <p>&copy; {new Date().getFullYear()} PixelMind Agency. All rights reserved.</p>
-              
               </div>
             </div>
           </footer>
         );
       };
 
-      // App Component
+      // App
       const App = () => {
         return (
           <div className="min-h-screen bg-transparent text-white font-sans selection:bg-purple-500 selection:text-white overflow-x-hidden">
@@ -545,13 +546,8 @@
         );
       };
 
-      // Mount
       const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      );
+      root.render(<App />);
     </script>
   </body>
 </html>
