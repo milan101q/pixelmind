@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -33,7 +34,7 @@
         "@type": "MarketingAgency",
         "name": "PixelMind Agency",
         "url": "https://milan101q.github.io/pixelmind/",
-        "logo": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=200&auto=format&fit=crop",
+        "logo": "https://raw.githubusercontent.com/milan101q/pixelmind/main/AF5B9653-FD4A-4328-98B2-0F4200BD3500.PNG",
         "sameAs": [
           "https://www.instagram.com/pixelmind.agency_/"
         ],
@@ -44,7 +45,7 @@
     </script>
     
     <!-- Favicon Sync Script -->
-    <link id="favicon" rel="icon" type="image/png" href="" />
+    <link id="favicon" rel="icon" type="image/png" href="https://raw.githubusercontent.com/milan101q/pixelmind/main/AF5B9653-FD4A-4328-98B2-0F4200BD3500.PNG" />
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -142,8 +143,7 @@
         BarChart3, 
         ArrowRight, 
         PlayCircle, 
-        ArrowUpRight,
-        BrainCircuit
+        ArrowUpRight
       } from 'lucide-react';
 
       // --- CONSTANTS ---
@@ -153,7 +153,8 @@
 
       const ASSETS = {
         HERO_BG: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop", 
-        LOGO: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=200&auto=format&fit=crop", 
+        HERO_VIDEO: "https://cdn.pixabay.com/video/2023/02/16/150993-800045265_large.mp4", // Abstract Purple/Blue Digital Flow
+        LOGO: "https://raw.githubusercontent.com/milan101q/pixelmind/main/AF5B9653-FD4A-4328-98B2-0F4200BD3500.PNG", // User provided logo
       };
 
       const SERVICES = [
@@ -187,6 +188,13 @@
           title: 'Luxury Transportation',
           category: 'Dignity Pro Limousine',
           instagramUrl: 'https://www.instagram.com/reel/DRlbdZZjetx/',
+          description: ''
+      },
+       {
+          id: '3',
+          title: 'Luxury Transportation',
+          category: 'Dignity Pro Limousine',
+          instagramUrl: 'https://www.instagram.com/reel/DRmt24-jX4a/',
           description: ''
       }
       ];
@@ -231,15 +239,13 @@
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
               
               <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                  {/* Dynamic Icon Container */}
-                  <div className="relative">
-                    {/* Glow Effect */}
-                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-20 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse"></div>
-                    
-                    {/* Icon Background */}
-                    <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-white/10 flex items-center justify-center shadow-xl backdrop-blur-sm group-hover:border-purple-500/50 transition-colors">
-                       <BrainCircuit className="w-6 h-6 text-purple-400 group-hover:text-white transition-colors duration-300" />
-                    </div>
+                  {/* Logo Image */}
+                  <div className="relative w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105">
+                      <img 
+                        src={ASSETS.LOGO} 
+                        alt="PixelMind Agency" 
+                        className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]" 
+                      />
                   </div>
 
                   {/* Text Logo */}
@@ -304,16 +310,24 @@
         return (
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
-              {/* Updated Alt tag for SEO */}
-              <img 
-                src={ASSETS.HERO_BG} 
-                alt="AI Video Marketing Abstract Background - PixelMind Agency" 
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/50 to-brand-dark z-10"></div>
+               {/* Background Video */}
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                poster={ASSETS.HERO_BG}
+                className="w-full h-full object-cover opacity-60"
+              >
+                <source src={ASSETS.HERO_VIDEO} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/60 to-brand-dark z-10"></div>
               
-              <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-20 text-center pt-24">

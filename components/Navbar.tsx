@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram, BrainCircuit } from 'lucide-react';
-import { LINKS } from '../constants';
+import { Menu, X, Instagram } from 'lucide-react';
+import { LINKS, ASSETS } from '../constants';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,15 +35,13 @@ export const Navbar: React.FC = () => {
         
         {/* Logo Area */}
         <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            {/* Dynamic Icon Container */}
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-20 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse"></div>
-              
-              {/* Icon Background */}
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-white/10 flex items-center justify-center shadow-xl backdrop-blur-sm group-hover:border-purple-500/50 transition-colors">
-                 <BrainCircuit className="w-6 h-6 text-purple-400 group-hover:text-white transition-colors duration-300" />
-              </div>
+            {/* Logo Image */}
+            <div className="relative w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105">
+                <img 
+                  src={ASSETS.LOGO} 
+                  alt="PixelMind Agency" 
+                  className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]" 
+                />
             </div>
 
             {/* Text Logo */}

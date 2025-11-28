@@ -14,19 +14,26 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       
-      {/* Background Image with lighter gradient overlay for vibrance */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={ASSETS.HERO_BG} 
-          alt="Abstract Background" 
-          className="w-full h-full object-cover opacity-80"
-        />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          poster={ASSETS.HERO_BG}
+          className="w-full h-full object-cover opacity-60"
+        >
+          <source src={ASSETS.HERO_VIDEO} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
         {/* Gradient Overlay that fades from top (dark) to bottom but keeps colors visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/50 to-brand-dark z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/60 to-brand-dark z-10"></div>
         
-        {/* Floating color orbs for extra vibrance */}
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
+        {/* Floating color orbs for extra vibrance (Adjusted specifically for video background) */}
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-20 text-center pt-24">

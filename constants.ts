@@ -8,7 +8,8 @@ export const LINKS = {
 export const ASSETS = {
   // A more vibrant, abstract, high-quality 3D render background
   HERO_BG: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop", 
-  LOGO: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=200&auto=format&fit=crop", 
+  HERO_VIDEO: "https://cdn.pixabay.com/video/2023/02/16/150993-800045265_large.mp4", // Abstract Purple/Blue Digital Flow
+  LOGO: "https://raw.githubusercontent.com/milan101q/pixelmind/main/AF5B9653-FD4A-4328-98B2-0F4200BD3500.PNG", // User provided logo
 };
 
 export const SERVICES = [
