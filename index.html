@@ -3,7 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PixelMind Agency | AI Video Marketing Specialists</title>
+    
+    <!-- SEO Primary Metadata -->
+    <title>PixelMind Agency | AI Video Marketing & Viral Content Specialists</title>
+    <meta name="description" content="PixelMind Agency is a premier AI Video Marketing Agency. We specialize in generative AI visuals (Sora, Runway, Veo), viral Instagram Reels, and performance-driven video strategy to convert viewers into customers." />
+    <meta name="keywords" content="AI Video Marketing, Generative AI Video, Digital Marketing Agency, Viral Content Creation, Instagram Reels Marketing, Short-form Video, PixelMind Agency, AI Visuals, Video Strategy" />
+    <meta name="author" content="PixelMind Agency" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://milan101q.github.io/pixelmind/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://milan101q.github.io/pixelmind/" />
+    <meta property="og:title" content="PixelMind Agency | AI Video Marketing Specialists" />
+    <meta property="og:description" content="High-impact AI video marketing. We blend generative AI with performance strategy to create viral content that converts." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://milan101q.github.io/pixelmind/" />
+    <meta property="twitter:title" content="PixelMind Agency | AI Video Marketing Specialists" />
+    <meta property="twitter:description" content="High-impact AI video marketing. We blend generative AI with performance strategy to create viral content that converts." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" />
+
+    <!-- JSON-LD Structured Data for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MarketingAgency",
+        "name": "PixelMind Agency",
+        "url": "https://milan101q.github.io/pixelmind/",
+        "logo": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=200&auto=format&fit=crop",
+        "sameAs": [
+          "https://www.instagram.com/pixelmind.agency_/"
+        ],
+        "description": "High-impact AI video marketing agency specializing in viral content creation and generative AI visuals.",
+        "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+        "priceRange": "$$$"
+      }
+    </script>
+    
+    <!-- Favicon Sync Script -->
+    <link id="favicon" rel="icon" type="image/png" href="" />
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -72,7 +113,7 @@
     </style>
 
     <!-- Import Map for Modules -->
-    <!-- FIX: Removed conflicting React versions. Added ?deps to ensure shared React instance. -->
+    <!-- FIX: Strictly using esm.sh for all dependencies to ensure React version consistency -->
     <script type="importmap">
 {
   "imports": {
@@ -134,20 +175,26 @@
 
       const PORTFOLIO_ITEMS = [
        {
-    id: '1',
-    title: 'Car Dealership',
-    category: 'Nova Autoland',
-    instagramUrl: 'https://www.instagram.com/reel/DRlT1gdjaO-/',
-    description: ''
+          id: '1',
+          title: 'Car Dealership',
+          category: 'Nova Autoland',
+          instagramUrl: 'https://www.instagram.com/reel/DRlT1gdjaO-/',
+          description: ''
       },
-  {
-    id: '2',
-    title: 'Luxury Transportation',
-    category: 'Dignity Pro Limousine',
-    instagramUrl: 'https://www.instagram.com/reel/DRlbdZZjetx/',
-    description: ''
-     }
+      {
+          id: '2',
+          title: 'Luxury Transportation',
+          category: 'Dignity Pro Limousine',
+          instagramUrl: 'https://www.instagram.com/reel/DRlbdZZjetx/',
+          description: ''
+      }
       ];
+
+      // Sync Favicon
+      const link = document.getElementById('favicon');
+      if (link) {
+        link.href = ASSETS.LOGO;
+      }
 
       // --- COMPONENTS ---
 
@@ -183,11 +230,12 @@
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
               
               <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-500 to-purple-600 p-0.5 shadow-lg shadow-purple-500/20">
-                     <div className="w-full h-full bg-black/90 backdrop-blur rounded-[10px] flex items-center justify-center">
-                          <span className="font-bold text-xl text-white">P</span>
-                     </div>
-                  </div>
+                  {/* Updated Logo for better SEO and visuals */}
+                  <img 
+                    src={ASSETS.LOGO} 
+                    alt="PixelMind Agency Logo" 
+                    className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-purple-500/20"
+                  />
                   <span className="text-2xl font-bold tracking-tight text-white">
                     Pixel<span className="text-purple-400">Mind</span>
                   </span>
@@ -249,9 +297,10 @@
         return (
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
+              {/* Updated Alt tag for SEO */}
               <img 
                 src={ASSETS.HERO_BG} 
-                alt="Abstract Background" 
+                alt="AI Video Marketing Abstract Background - PixelMind Agency" 
                 className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/50 to-brand-dark z-10"></div>
