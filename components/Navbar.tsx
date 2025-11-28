@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram } from 'lucide-react';
+import { Menu, X, Instagram, BrainCircuit } from 'lucide-react';
 import { LINKS } from '../constants';
 
 export const Navbar: React.FC = () => {
@@ -34,28 +34,35 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
         {/* Logo Area */}
-        <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-500 to-purple-600 p-0.5 shadow-lg shadow-purple-500/20">
-               <div className="w-full h-full bg-black/90 backdrop-blur rounded-[10px] flex items-center justify-center">
-                    <span className="font-bold text-xl text-white">P</span>
-               </div>
+        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            {/* Dynamic Icon Container */}
+            <div className="relative">
+              {/* Glow Effect */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-20 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+              
+              {/* Icon Background */}
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-white/10 flex items-center justify-center shadow-xl backdrop-blur-sm group-hover:border-purple-500/50 transition-colors">
+                 <BrainCircuit className="w-6 h-6 text-purple-400 group-hover:text-white transition-colors duration-300" />
+              </div>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-white">
-              Pixel<span className="text-purple-400">Mind</span>
+
+            {/* Text Logo */}
+            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-purple-200 transition-all">
+              Pixel<span className="text-purple-500 group-hover:text-purple-300 transition-colors">Mind</span>
             </span>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</button>
-          <button onClick={() => scrollToSection('work')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Work</button>
-          <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About</button>
+          <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform duration-200">Services</button>
+          <button onClick={() => scrollToSection('work')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform duration-200">Work</button>
+          <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform duration-200">About</button>
           
           <a 
             href={LINKS.INSTAGRAM} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-transform hover:scale-105"
+            className="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             <Instagram size={18} />
             Connect
@@ -65,7 +72,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Toggle */}
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-white"
+          className="md:hidden text-white hover:text-purple-400 transition-colors"
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
