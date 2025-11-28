@@ -1,14 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PixelMind Agency | AI Video Marketing Specialists</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Babel for in-browser transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Tailwind Config -->
     <script>
       tailwind.config = {
         theme: {
@@ -38,6 +46,8 @@
         }
       }
     </script>
+    
+    <!-- Global Styles -->
     <style>
       body {
         /* Deep rich gradient instead of flat black */
@@ -60,18 +70,547 @@
         background: #6d28d9;
       }
     </style>
-  <script type="importmap">
+
+    <!-- Import Map for Modules -->
+    <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
+
+    <!-- Main Application Script -->
+    <script type="text/babel" data-type="module">
+      import React, { useState, useEffect } from 'react';
+      import ReactDOM from 'react-dom/client';
+      import { 
+        Menu, 
+        X, 
+        Instagram, 
+        Cpu, 
+        Zap, 
+        BarChart3, 
+        ArrowRight, 
+        PlayCircle, 
+        ArrowUpRight 
+      } from 'lucide-react';
+
+      // --- CONSTANTS ---
+      const LINKS = {
+        INSTAGRAM: "https://www.instagram.com/pixelmind.agency_/",
+      };
+
+      const ASSETS = {
+        HERO_BG: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop", 
+        LOGO: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=200&auto=format&fit=crop", 
+      };
+
+      const SERVICES = [
+        {
+          title: "AI Video Generation",
+          description: "State-of-the-art generative models (Sora, Runway, Veo) creating surreal, hyper-realistic visuals.",
+          icon: Cpu,
+        },
+        {
+          title: "Viral Short-Form",
+          description: "Expertly crafted Reels/TikToks optimized for algorithm dominance and maximum engagement.",
+          icon: Zap,
+        },
+        {
+          title: "Performance Strategy",
+          description: "Visual assets built on direct-response psychology to convert viewers into customers.",
+          icon: BarChart3,
+        },
+      ];
+
+      const PORTFOLIO_ITEMS = [
+        {
+          id: '1',
+          title: 'Gilded Rift',
+          category: 'Textured Art',
+          instagramUrl: 'https://www.instagram.com/reel/DJfZ5_PRO_S/',
+          description: 'A fusion of raw stone textures and metallic gold leaf, evoking the spirit of the canyon in a modern form.'
+        },
+        {
+          id: '2',
+          title: 'Verdant Abstract',
+          category: 'Modern Decor',
+          instagramUrl: 'https://www.instagram.com/reel/DPMgBlzgN6V/',
+          description: 'Deep emerald tones accented with light-catching details, bringing the serenity of the forest into your home.'
+        },
+        {
+          id: '3',
+          title: 'Fluid Motion',
+          category: 'Abstract',
+          instagramUrl: 'https://www.instagram.com/reel/DQudqX4EZ0B/',
+          description: 'Capturing the flow of water through dynamic brushstrokes and resin-like finishes.'
+        },
+        {
+          id: '4',
+          title: 'Sands of Time',
+          category: 'Warmth',
+          instagramUrl: 'https://www.instagram.com/reel/DQZzIgbEWsw/',
+          description: 'Warm, earthy terracottas and sandy beiges blended to create a calming, modern desert aesthetic.'
+        },
+        {
+          id: '5',
+          title: 'Golden Peak',
+          category: 'Statement Art',
+          instagramUrl: 'https://www.instagram.com/reel/DPzIaQggFsY/',
+          description: 'High-contrast textures mimicking the rugged beauty of mountain peaks at sunset, finished with gold.'
+        },
+        {
+          id: '6',
+          title: 'Winter Minimalist',
+          category: 'Texture',
+          instagramUrl: 'https://www.instagram.com/reel/DPmT6aDgEje/',
+          description: 'The hushed quiet of a snow-covered landscape expressed through white-on-white heavy texture.'
+        },
+        {
+          id: '8',
+          title: 'Ascent',
+          category: 'Modern Design',
+          instagramUrl: 'https://www.instagram.com/reel/DPRth8bAB3_/',
+          description: 'Vertical movement and bold structures symbolizing growth, energy, and upward momentum.'
+        },
+        {
+          id: '9',
+          title: 'Studio Process',
+          category: 'Behind Scenes',
+          instagramUrl: 'https://www.instagram.com/p/DPAYn0CEUev/',
+          description: 'A glimpse into the creation of handmade modern art, where every stroke is intentional.'
+        },
+        {
+          id: '10',
+          title: 'Earthen Path',
+          category: 'Organic',
+          instagramUrl: 'https://www.instagram.com/reel/DRK1vRkERlL/',
+          description: 'Grounding tones and organic patterns designed to bring a natural feel to modern interiors.'
+        },
+        {
+          id: '11',
+          title: 'Morning Haze',
+          category: 'Atmosphere',
+          instagramUrl: 'https://www.instagram.com/reel/DOW3QJegDds/',
+          description: 'Soft, ethereal layers creating a peaceful atmosphere, perfect for bedroom or lounge spaces.'
+        },
+        {
+          id: '12',
+          title: 'Art in Motion',
+          category: 'Process',
+          instagramUrl: 'https://www.instagram.com/reel/DMbgDJ4R4t3/',
+          description: 'The dynamic process of bringing texture, color, and movement to life on canvas.'
+        },
+        {
+          id: '13',
+          title: 'Wild Canvas',
+          category: 'Creation',
+          instagramUrl: 'https://www.instagram.com/reel/DMRIQDjRUAD/',
+          description: 'Where untamed inspiration meets delicate craftsmanship in our Virginia studio.'
+        },
+        {
+          id: '14',
+          title: 'Serene Heights',
+          category: 'Modern Decor',
+          instagramUrl: 'https://www.instagram.com/reel/DL_DMsdRtJs/',
+          description: 'Elevated textures that bring a sense of peace and perspective to your wall space.'
+        },
+        {
+          id: '15',
+          title: 'Oceanic Depth',
+          category: 'Abstract',
+          instagramUrl: 'https://www.instagram.com/reel/DKspyitRqvz/',
+          description: 'Deep blues and crashing whites in a fluid abstract form, mimicking the tides.'
+        },
+        {
+          id: '16',
+          title: 'Hidden Layers',
+          category: 'Detail',
+          instagramUrl: 'https://www.instagram.com/reel/DKS5y8QxTi6/',
+          description: 'Complex textures revealing beauty in the details, inviting you to look closer.'
+        },
+        {
+          id: '17',
+          title: 'First Light',
+          category: 'Gold Leaf',
+          instagramUrl: 'https://www.instagram.com/reel/DJ12vy5Rz4i/',
+          description: 'Bright, hopeful tones and metallic accents to illuminate any room.'
+        },
+        {
+          id: '18',
+          title: 'Nature\'s Grain',
+          category: 'Texture',
+          instagramUrl: 'https://www.instagram.com/reel/DJnE6Q3RCZT/',
+          description: 'Celebrating the organic patterns found in the wild through tactile art.'
+        },
+        {
+          id: '19',
+          title: 'Windswept',
+          category: 'Motion',
+          instagramUrl: 'https://www.instagram.com/reel/DRfYpnHkRlK/',
+          description: 'Dynamic motion captured in static form, adding energy to your decor.'
+        },
+        {
+          id: '20',
+          title: 'Stone Harmony',
+          category: 'Neutral',
+          instagramUrl: 'https://www.instagram.com/reel/DJc1JTBRkeL/',
+          description: 'Balanced compositions of grey, stone, and gold for a sophisticated look.'
+        },
+        {
+          id: '21',
+          title: 'Artistic Vision',
+          category: 'Gallery',
+          instagramUrl: 'https://www.instagram.com/p/DJXoMMcRDr3/',
+          description: 'A captured moment of artistic inspiration, ready to transform your space.'
+        },
+        {
+          id: '22',
+          title: 'Artistic Vision',
+          category: 'Gallery',
+          instagramUrl: 'https://www.instagram.com/p/DNtHRQaQE2a/',
+          description: 'A captured moment of artistic inspiration, ready to transform your space.'
+        }
+      ];
+
+      // --- COMPONENTS ---
+
+      // Navbar
+      const Navbar = () => {
+        const [isScrolled, setIsScrolled] = useState(false);
+        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+        useEffect(() => {
+          const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+          };
+          window.addEventListener('scroll', handleScroll);
+          return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+
+        const scrollToSection = (id) => {
+          setIsMobileMenuOpen(false);
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+
+        return (
+          <nav 
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+              isScrolled 
+                ? 'bg-[#0f0518]/80 backdrop-blur-lg border-white/10 py-4' 
+                : 'bg-transparent border-transparent py-6'
+            }`}
+          >
+            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+              
+              <div className="flex items-center gap-3">
+                  <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-500 to-purple-600 p-0.5 shadow-lg shadow-purple-500/20">
+                     <div className="w-full h-full bg-black/90 backdrop-blur rounded-[10px] flex items-center justify-center">
+                          <span className="font-bold text-xl text-white">P</span>
+                     </div>
+                  </div>
+                  <span className="text-2xl font-bold tracking-tight text-white">
+                    Pixel<span className="text-purple-400">Mind</span>
+                  </span>
+              </div>
+
+              <div className="hidden md:flex items-center gap-8">
+                <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</button>
+                <button onClick={() => scrollToSection('work')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Work</button>
+                <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About</button>
+                
+                <a 
+                  href={LINKS.INSTAGRAM} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-transform hover:scale-105"
+                >
+                  <Instagram size={18} />
+                  Connect
+                </a>
+              </div>
+
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden text-white"
+              >
+                {isMobileMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
+
+            {isMobileMenuOpen && (
+              <div className="md:hidden absolute top-full left-0 w-full bg-[#0f0518] border-b border-white/10 p-6 flex flex-col gap-6 animate-in slide-in-from-top-5 shadow-2xl">
+                <button onClick={() => scrollToSection('services')} className="text-lg text-gray-300 text-left">Services</button>
+                <button onClick={() => scrollToSection('work')} className="text-lg text-gray-300 text-left">Work</button>
+                <button onClick={() => scrollToSection('about')} className="text-lg text-gray-300 text-left">About</button>
+                <a 
+                  href={LINKS.INSTAGRAM} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-white shadow-lg"
+                >
+                  <Instagram size={20} />
+                  DM us on Instagram
+                </a>
+              </div>
+            )}
+          </nav>
+        );
+      };
+
+      // Hero
+      const Hero = () => {
+        const scrollToWork = () => {
+          const element = document.getElementById('work');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+
+        return (
+          <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <img 
+                src={ASSETS.HERO_BG} 
+                alt="Abstract Background" 
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/50 to-brand-dark z-10"></div>
+              
+              <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen z-10" style={{ animationDelay: '2s' }}></div>
+            </div>
+
+            <div className="container mx-auto px-6 relative z-20 text-center pt-24">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8 animate-float shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)] animate-pulse"></span>
+                <span className="text-sm font-semibold tracking-wide text-white uppercase">Accepting New Clients</span>
+              </div>
+
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-8 text-white drop-shadow-xl">
+                Visuals That <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  Captivate
+                </span>
+              </h1>
+
+              <p className="max-w-2xl mx-auto text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed font-light">
+                We blend generative AI with high-end motion design to create scroll-stopping experiences.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a 
+                  href={LINKS.INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-100 hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)] flex items-center justify-center gap-3"
+                >
+                  Start Project
+                  <ArrowRight size={22} />
+                </a>
+                <button 
+                  onClick={scrollToWork}
+                  className="w-full sm:w-auto px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-lg rounded-full hover:bg-white/20 hover:scale-105 transition-all flex items-center justify-center gap-3"
+                >
+                  <PlayCircle size={22} />
+                  Showcase
+                </button>
+              </div>
+
+            </div>
+          </section>
+        );
+      };
+
+      // Services
+      const Services = () => {
+        return (
+          <section id="services" className="py-32 relative">
+            <div className="container mx-auto px-6 relative z-10">
+              
+              <div className="text-center mb-20">
+                  <span className="text-purple-400 font-bold tracking-wider uppercase text-sm mb-4 block">Our Expertise</span>
+                  <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                    Intelligence Meets <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-500">Imagination</span>
+                  </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {SERVICES.map((service, index) => (
+                  <div 
+                    key={index}
+                    className="group p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-2 shadow-xl"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-8 shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+                      <service.icon size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-purple-300 transition-colors">{service.title}</h3>
+                    <p className="text-gray-400 leading-relaxed text-lg">
+                      {service.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      // Portfolio
+      // Helper to convert standard IG URL to Embed URL
+      const getEmbedUrl = (url) => {
+        const cleanUrl = url.split('?')[0];
+        const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
+        return `${baseUrl}embed`;
+      };
+
+      const Portfolio = () => {
+        const displayItems = PORTFOLIO_ITEMS.slice(0, 6);
+
+        return (
+          <section id="work" className="py-32 relative">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[128px] pointer-events-none"></div>
+
+            <div className="container mx-auto px-6">
+              
+              <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+                <div>
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Sample <br/><span className="text-purple-400">Creations</span></h2>
+                  <p className="text-xl text-gray-400 max-w-lg">
+                    Discover our portfolio of AI-generated videos, designed to captivate audiences and drive engagement.
+                  </p>
+                </div>
+                <a 
+                  href={LINKS.INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:border-white transition-colors"
+                >
+                  See all on Instagram <ArrowUpRight size={18} />
+                </a>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                {displayItems.map((item) => (
+                  <div 
+                    key={item.id}
+                    className="group relative flex flex-col gap-4"
+                  >
+                    <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl bg-[#0f0518]">
+                      <iframe 
+                        className="w-full aspect-[9/13] md:aspect-[9/14]"
+                        src={getEmbedUrl(item.instagramUrl)} 
+                        allowTransparency={true}
+                        allowFullScreen={true}
+                        frameBorder="0"
+                        scrolling="no"
+                        title={item.title}
+                        style={{
+                          backgroundColor: 'white',
+                        }}
+                      ></iframe>
+                    </div>
+
+                    <div className="px-2">
+                      <div className="flex items-center justify-between mb-1">
+                          <span className="text-purple-400 text-xs font-bold tracking-widest uppercase">
+                          {item.category}
+                          </span>
+                          <a href={item.instagramUrl} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
+                              <Instagram size={16} />
+                          </a>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-400 line-clamp-2">
+                          {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-16 text-center md:hidden">
+                <a 
+                  href={LINKS.INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/10 rounded-full font-bold text-white hover:bg-white/20 transition-all"
+                >
+                  <Instagram size={20} />
+                  View More on Instagram
+                </a>
+              </div>
+
+            </div>
+          </section>
+        );
+      };
+
+      // Footer
+      const Footer = () => {
+        return (
+          <footer id="about" className="bg-black border-t border-white/10 pt-16 pb-8">
+            <div className="container mx-auto px-6">
+              
+              <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div className="mb-8 md:mb-0 text-center md:text-left">
+                  <h2 className="text-3xl font-bold mb-2">Pixel<span className="text-blue-500">Mind</span></h2>
+                  <p className="text-gray-500 text-sm max-w-xs">
+                    Redefining digital presence through artificial intelligence and creative strategy.
+                  </p>
+                </div>
+
+                <div className="flex gap-6">
+                  <a href={LINKS.INSTAGRAM} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-pink-500 transition-colors">
+                    <Instagram size={20} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; {new Date().getFullYear()} PixelMind Agency. All rights reserved.</p>
+              
+              </div>
+            </div>
+          </footer>
+        );
+      };
+
+      // App Component
+      const App = () => {
+        return (
+          <div className="min-h-screen bg-transparent text-white font-sans selection:bg-purple-500 selection:text-white overflow-x-hidden">
+            <Navbar />
+            <main>
+              <Hero />
+              <Services />
+              <Portfolio />
+            </main>
+            <Footer />
+          </div>
+        );
+      };
+
+      // Mount
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    </script>
   </body>
 </html>

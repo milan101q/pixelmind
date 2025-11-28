@@ -27,7 +27,7 @@ export const Portfolio: React.FC = () => {
           <div>
              <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Sample <br/><span className="text-purple-400">Creations</span></h2>
              <p className="text-xl text-gray-400 max-w-lg">
-               Explore a collection of our video concepts and visual experiments designed to showcase our creative capabilities.
+               Discover our portfolio of AI-generated videos, designed to captivate audiences and drive engagement.
              </p>
           </div>
           <a 
