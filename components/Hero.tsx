@@ -46,9 +46,9 @@ export const Hero: React.FC = () => {
 
         {/* Main Heading */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-8 text-white drop-shadow-xl">
-          AI Video <br />
+          AI Business <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-            Solutions
+            Studio
           </span>
         </h1>
 
