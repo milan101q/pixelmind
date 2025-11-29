@@ -9,8 +9,8 @@ export const ASSETS = {
   // A more vibrant, abstract, high-quality 3D render background
   HERO_BG: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop", 
   HERO_VIDEO: "https://cdn.pixabay.com/video/2023/02/16/150993-800045265_large.mp4", // Abstract Purple/Blue Digital Flow
-  // Professional "Pixel Play" Logo: Play button fragmenting into pixels (Video + AI)
-  LOGO: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='128' height='128' rx='32' fill='url(%23g)'/%3E%3Cpath d='M42 38 V90 L82 64 Z' fill='white'/%3E%3Crect x='86' y='58' width='12' height='12' rx='3' fill='white'/%3E%3Crect x='102' y='50' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3Crect x='102' y='68' width='10' height='10' rx='2' fill='white' opacity='0.8'/%3E%3C/svg%3E",
+  // Professional "Pixel Arrow" Logo: A play button/arrow formed by 6 circular pixels
+  LOGO: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='64' cy='64' r='64' fill='url(%23g)'/%3E%3C!-- Pixel Grid forming Play Triangle --%3E%3C!-- Column 1 --%3E%3Ccircle cx='45' cy='38' r='9' fill='white'/%3E%3Ccircle cx='45' cy='64' r='9' fill='white'/%3E%3Ccircle cx='45' cy='90' r='9' fill='white'/%3E%3C!-- Column 2 --%3E%3Ccircle cx='70' cy='51' r='9' fill='white'/%3E%3Ccircle cx='70' cy='77' r='9' fill='white'/%3E%3C!-- Column 3 --%3E%3Ccircle cx='95' cy='64' r='9' fill='white'/%3E%3C/svg%3E",
 };
 
 export const SERVICES = [
@@ -52,5 +52,19 @@ export const PORTFOLIO_ITEMS = [
     category: 'Dignity Pro Limousine',
     instagramUrl: 'https://www.instagram.com/reel/DRmt24-jX4a/',
     description: ''
+  },
+   {
+      id: '4',
+      title: 'Car Dealership',
+      category: 'Nova Autoland',
+      instagramUrl: 'https://www.instagram.com/p/DRnzLW2jZI9/',
+      description: ''
+  },
+   {
+      id: '5',
+      title: 'Ladies’ Fashion Accessories Store',
+      category: 'Urban Femme',
+      instagramUrl: 'https://www.instagram.com/p/DRpTSHsDXgA/',
+      description: ''
   }
 ];
