@@ -190,6 +190,13 @@
           instagramUrl: 'https://www.instagram.com/reel/DRlbdZZjetx/',
           description: ''
       },
+      {
+          id: '21',
+          title: 'Automotive Services',
+          category: 'Pre Purchase Inspection',
+          instagramUrl: 'https://www.instagram.com/p/DQieUhADvwF/',
+          description: ''
+      },
        {
           id: '3',
           title: 'Luxury Transportation',
@@ -202,6 +209,13 @@
           title: 'Car Dealership',
           category: 'Nova Autoland',
           instagramUrl: 'https://www.instagram.com/p/DRnzLW2jZI9/',
+          description: ''
+      },
+       {
+          id: '41',
+          title: 'Automotive Services',
+          category: 'Pre Purchase Inspection',
+          instagramUrl: 'https://www.instagram.com/p/DP-za1_jVJ9/',
           description: ''
       },
        {
@@ -230,6 +244,27 @@
           title: 'Ladies’ Fashion Accessories Store',
           category: 'Urban Femme',
           instagramUrl: 'https://www.instagram.com/p/DRpTSHsDXgA/',
+          description: ''
+      },
+       {
+          id: '9',
+          title: 'Luxury Transportation',
+          category: 'Dignity Pro Limousine',
+          instagramUrl: 'https://www.instagram.com/p/DP5jszajZxx/',
+          description: ''
+      },
+       {
+          id: '10',
+          title: 'Luxury Transportation',
+          category: 'Dignity Pro Limousine',
+          instagramUrl: 'https://www.instagram.com/reel/DP6cj0LjQJq/',
+          description: ''
+      },
+       {
+          id: '11',
+          title: 'Luxury Transportation',
+          category: 'Dignity Pro Limousine',
+          instagramUrl: 'https://www.instagram.com/reel/DQ5l9MJjETc/',
           description: ''
       }
       ];
@@ -448,8 +483,8 @@
 
       // Portfolio
       const Portfolio = () => {
-        // Limit to first 6 items
-        const displayItems = PORTFOLIO_ITEMS.slice(0, 6);
+        // Removed slice limit, showing all items
+        const displayItems = PORTFOLIO_ITEMS;
 
         // Security: Helper to convert standard IG URL to Embed URL
         // Ensures strictly Instagram domains to avoid XSS injection via external data

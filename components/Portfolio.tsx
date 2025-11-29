@@ -13,8 +13,8 @@ const getEmbedUrl = (url: string) => {
 };
 
 export const Portfolio: React.FC = () => {
-  // Limit to first 6 items for performance (embedding 20+ iframes is heavy)
-  const displayItems = PORTFOLIO_ITEMS.slice(0, 6);
+  // Removed the slice limit to show all items as requested
+  const displayItems = PORTFOLIO_ITEMS;
 
   return (
     <section id="work" className="py-32 relative">
