@@ -6,8 +6,8 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // Using standard 'embed/' with query params is often most reliable for Reels on mobile
-  return `${baseUrl}embed/?utm_source=ig_embed&amp;utm_campaign=loading`;
+  // Use standard embed endpoint, remove extra tracking params that might block playback on mobile
+  return `${baseUrl}embed/`;
 };
 
 export const Portfolio: React.FC = () => {
@@ -53,9 +53,8 @@ export const Portfolio: React.FC = () => {
                   frameBorder="0"
                   scrolling="no"
                   title={item.title}
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
                   style={{ backgroundColor: '#0B0F19' }}
-                  loading="lazy"
                 ></iframe>
               </div>
 
@@ -64,7 +63,7 @@ export const Portfolio: React.FC = () => {
                     <span className="text-cyan-500 text-[10px] font-bold tracking-[0.2em] uppercase">
                     {item.category}
                     </span>
-                    <a href={item.instagramUrl} target="_blank" rel="noreferrer" className="text-slate-600 hover:text-white transition-colors">
+                    <a href={item.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-white transition-colors">
                         <Instagram size={14} />
                     </a>
                 </div>
