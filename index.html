@@ -7,8 +7,8 @@
     
     <!-- SEO Primary Metadata -->
     <title>PixelMind Agency | AI Business Studio</title>
-    <meta name="description" content="PixelMind Agency is a premier AI Business Studio. We specialize in generative AI visuals, viral short-form content, and performance-driven video strategy." />
-    <meta name="keywords" content="AI Video Marketing, Generative AI Video, Digital Marketing Agency, Viral Content Creation, Instagram Reels Marketing, Short-form Video, PixelMind Agency, AI Visuals, Video Strategy" />
+    <meta name="description" content="PixelMind Agency is a premier AI Business Studio specializing in generative AI visuals, viral short-form content, and performance-driven video strategy for scalable growth." />
+    <meta name="keywords" content="AI Video Marketing, Generative AI Video, Digital Marketing Agency, Viral Content Creation, Instagram Reels Marketing, Short-form Video, PixelMind Agency, AI Visuals, Video Strategy, Business Video Intelligence" />
     <meta name="author" content="PixelMind Agency" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://milan101q.github.io/pixelmind/" />
@@ -27,24 +27,7 @@
     <meta property="twitter:description" content="We craft advanced AI video solutions that support scalable business growth." />
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" />
 
-    <!-- JSON-LD Structured Data for Organization -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MarketingAgency",
-        "name": "PixelMind Agency",
-        "url": "https://milan101q.github.io/pixelmind/",
-        "logo": "https://raw.githubusercontent.com/milan101q/pixelmind/refs/heads/main/Gemini_Generated_Image_6mpi0t6mpi0t6mpi.png",
-        "sameAs": [
-          "https://www.instagram.com/pixelmind.agency_/"
-        ],
-        "description": "High-impact AI video marketing agency specializing in viral content creation and generative AI visuals.",
-        "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
-        "priceRange": "$$$"
-      }
-    </script>
-    
-    <!-- Favicon Sync Script (Updated to new Wireframe Cube Logo) -->
+    <!-- Favicon Sync Script (Wireframe Cube Logo) -->
     <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z' /%3E%3Cpath d='M3.27 6.96 12 12.01 20.73 6.96' /%3E%3Cline x1='12' y1='22.08' x2='12' y2='12' /%3E%3Ccircle cx='12' cy='12' r='2' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='12' cy='2.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='3.5' cy='7.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='20.5' cy='7.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='3.5' cy='16.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='20.5' cy='16.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3Ccircle cx='12' cy='21.5' r='1' fill='%2322d3ee' stroke='none' /%3E%3C/svg%3E" />
     
     <!-- Tailwind CSS -->
@@ -120,7 +103,7 @@
       }
     </style>
 
-    <!-- Import Map for Modules - STRICT REACT 18 (Fixed: Removed conflicting React 19 entries) -->
+    <!-- Import Map for Modules - STRICT REACT 18 -->
     <script type="importmap">
 {
   "imports": {
@@ -334,7 +317,7 @@
                   <div className="relative w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       <img 
                         src={ASSETS.LOGO} 
-                        alt="PixelMind Agency" 
+                        alt="PixelMind Agency - AI Business Studio Logo" 
                         className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" 
                       />
                   </div>
@@ -630,9 +613,10 @@
 
       // App
       const App = () => {
-        // SEO: Generate Structured Data for Portfolio Items
+        // SEO: Generate Structured Data for Portfolio Items AND Services
         useEffect(() => {
-          const schema = {
+          // 1. Portfolio Schema (ItemList)
+          const portfolioSchema = {
             "@context": "https://schema.org",
             "@type": "ItemList",
             "itemListElement": PORTFOLIO_ITEMS.map((item, index) => ({
@@ -649,19 +633,49 @@
               }
             }))
           };
+
+          // 2. Services Schema (OfferCatalog)
+          const servicesSchema = {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "PixelMind Agency",
+            "url": "https://milan101q.github.io/pixelmind/",
+            "logo": ASSETS.LOGO,
+            "description": "Premier AI Business Studio specializing in generative visuals and performance video strategy.",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "AI Video Marketing Services",
+              "itemListElement": SERVICES.map((service) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": service.title,
+                  "description": service.description
+                }
+              }))
+            }
+          };
           
-          const script = document.createElement('script');
-          script.type = 'application/ld+json';
-          script.text = JSON.stringify(schema);
-          document.head.appendChild(script);
+          // Inject Scripts
+          const scriptPortfolio = document.createElement('script');
+          scriptPortfolio.type = 'application/ld+json';
+          scriptPortfolio.text = JSON.stringify(portfolioSchema);
+          document.head.appendChild(scriptPortfolio);
+
+          const scriptServices = document.createElement('script');
+          scriptServices.type = 'application/ld+json';
+          scriptServices.text = JSON.stringify(servicesSchema);
+          document.head.appendChild(scriptServices);
           
           return () => {
-            document.head.removeChild(script);
+            document.head.removeChild(scriptPortfolio);
+            document.head.removeChild(scriptServices);
           };
         }, []);
 
         return (
-          <div className="min-h-screen bg-[#030712] text-white font-sans selection:bg-cyan-500/30 selection:text-white overflow-x-hidden">
+          // bg-transparent allows the body radial gradient to show through
+          <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 selection:text-white overflow-x-hidden">
             <Navbar />
             <main>
               <Hero />

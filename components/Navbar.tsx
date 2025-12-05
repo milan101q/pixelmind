@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
             <div className="relative w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <img 
                   src={ASSETS.LOGO} 
-                  alt="PixelMind Agency" 
+                  alt="PixelMind Agency - AI Business Studio Logo" 
                   className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" 
                 />
             </div>
