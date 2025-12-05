@@ -63,6 +63,7 @@
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in': 'fadeIn 0.7s ease-in forwards',
             },
             keyframes: {
               float: {
@@ -72,6 +73,10 @@
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
               }
             }
           }
@@ -488,12 +493,10 @@
       const getEmbedUrl = (url) => {
         const cleanUrl = url.split('?')[0];
         const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-        // Using standard embed URL often works better across devices than captioned,
-        // and adding tracking params helps initialization
         return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
       };
 
-      // LazyIframe Component
+      // LazyIframe Component with Mobile Optimization
       const LazyIframe = ({ url, title }) => {
         const [isVisible, setIsVisible] = useState(false);
         const containerRef = useRef(null);
@@ -502,11 +505,19 @@
           const observer = new IntersectionObserver(
             ([entry]) => {
               if (entry.isIntersecting) {
-                setIsVisible(true);
+                // Delay loading slightly to prevent lag during fast scrolling
+                const timer = setTimeout(() => {
+                   setIsVisible(true);
+                }, 150);
+                
                 observer.disconnect();
+                return () => clearTimeout(timer);
               }
             },
-            { rootMargin: '200px' }
+            { 
+              rootMargin: '50px', // Reduced margin for mobile performance
+              threshold: 0.01 
+            }
           );
           
           if (containerRef.current) {
@@ -520,27 +531,26 @@
           <div ref={containerRef} className="relative w-full aspect-[9/16] bg-[#0B0F19] flex items-center justify-center">
             {isVisible ? (
               <iframe 
-                className="w-full h-full" 
+                className="w-full h-full opacity-0 animate-fade-in transition-opacity duration-700 ease-in" 
                 src={url} 
-                allowTransparency="true"
-                allowFullScreen="true"
-                frameBorder="0"
-                scrolling="no"
+                style={{ 
+                   border: 'none',
+                   position: 'absolute',
+                   top: 0,
+                   left: 0,
+                   width: '100%',
+                   height: '100%',
+                   opacity: 1
+                }}
                 title={title}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
                 playsInline={true}
-                style={{ 
-                  backgroundColor: '#0B0F19',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%'
-                }}
+                loading="lazy"
               ></iframe>
             ) : (
-              <div className="flex flex-col items-center justify-center gap-2">
-                <Loader2 className="w-6 h-6 text-cyan-500 animate-spin" />
+              <div className="flex flex-col items-center justify-center gap-2 absolute inset-0 z-10">
+                <div className="w-full h-full absolute inset-0 bg-gradient-to-tr from-cyan-900/10 to-blue-900/10 animate-pulse-slow"></div>
+                <Loader2 className="w-8 h-8 text-cyan-500/50 animate-spin relative z-20" />
               </div>
             )}
           </div>

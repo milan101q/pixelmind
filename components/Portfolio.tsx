@@ -10,7 +10,7 @@ const getEmbedUrl = (url: string) => {
   return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
 };
 
-// Lazy Load Component to prevent mobile browsers from crashing with too many iframes
+// Optimized Lazy Load Component
 const LazyIframe = ({ url, title }: { url: string, title: string }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,11 +19,19 @@ const LazyIframe = ({ url, title }: { url: string, title: string }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          // Small delay ensures we don't load heavy iframes if user is just fast-scrolling past
+          const timer = setTimeout(() => {
+            setIsVisible(true);
+          }, 150);
+          
           observer.disconnect();
+          return () => clearTimeout(timer);
         }
       },
-      { rootMargin: '200px' } // Load 200px before appearing
+      { 
+        rootMargin: '50px', // Reduced margin to save mobile resources
+        threshold: 0.01
+      }
     );
     
     if (containerRef.current) {
@@ -37,27 +45,26 @@ const LazyIframe = ({ url, title }: { url: string, title: string }) => {
     <div ref={containerRef} className="relative w-full aspect-[9/16] bg-[#0B0F19] flex items-center justify-center">
       {isVisible ? (
         <iframe 
-          className="w-full h-full" 
+          className="w-full h-full opacity-0 animate-fade-in transition-opacity duration-700 ease-in" 
           src={url} 
-          allowTransparency={true}
-          allowFullScreen={true}
-          frameBorder="0"
-          scrolling="no"
-          title={title}
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-          playsInline={true}
           style={{ 
-            backgroundColor: '#0B0F19',
+            border: 'none',
             position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
-            height: '100%'
+            height: '100%',
+            opacity: 1
           }}
+          title={title}
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+          playsInline={true}
+          loading="lazy" // Native lazy loading as fallback
         ></iframe>
       ) : (
-        <div className="flex flex-col items-center justify-center gap-2">
-          <Loader2 className="w-6 h-6 text-cyan-500 animate-spin" />
+        <div className="flex flex-col items-center justify-center gap-2 absolute inset-0 z-10">
+          <div className="w-full h-full absolute inset-0 bg-gradient-to-tr from-cyan-900/10 to-blue-900/10 animate-pulse-slow"></div>
+          <Loader2 className="w-8 h-8 text-cyan-500/50 animate-spin relative z-20" />
         </div>
       )}
     </div>
