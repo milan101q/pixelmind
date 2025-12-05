@@ -6,8 +6,9 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // Use standard embed mode (+ params) to remove caption chrome, maximizing the video 'Play' touch target size on mobile
-  return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
+  // MOBILE FIX: Use simple '/embed/' without params. This avoids strict tracking blocking 
+  // and often delegates better to the system video player on mobile webviews.
+  return `${baseUrl}embed/`;
 };
 
 export const Portfolio: React.FC = () => {
