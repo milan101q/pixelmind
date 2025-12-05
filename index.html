@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -119,7 +120,7 @@
       }
     </style>
 
-    <!-- Import Map for Modules - STRICT REACT 18 -->
+    <!-- Import Map for Modules - STRICT REACT 18 (Fixed: Removed conflicting React 19 entries) -->
     <script type="importmap">
 {
   "imports": {
@@ -507,8 +508,8 @@
         const getEmbedUrl = (url) => {
           const cleanUrl = url.split('?')[0];
           const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-          // MOBILE FIX: Use 'captioned' version. It wraps the video in a better player for mobile touch events.
-          return `${baseUrl}embed/captioned/`;
+          // MOBILE FIX: Use standard '/embed/' to remove UI chrome and maximize play button touch target
+          return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
         };
 
         return (
@@ -541,8 +542,7 @@
                     className="group relative flex flex-col gap-5"
                   >
                     <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0B0F19] shadow-2xl transition-all duration-300 group-hover:border-cyan-500/30">
-                      {/* Fixed Aspect Ratio for Mobile Reels and Removed Lazy Loading */}
-                      {/* Added descriptive title for SEO and accessibility */}
+                      {/* Fixed Aspect Ratio for Mobile Reels */}
                       <iframe 
                         className="w-full aspect-[9/16]" 
                         src={getEmbedUrl(item.instagramUrl)} 
@@ -552,8 +552,8 @@
                         scrolling="no"
                         title={`${item.title} - ${item.category} AI Video`}
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
-                        playsInline={true}
-                        style={{ backgroundColor: '#0B0F19', pointerEvents: 'auto' }}
+                        // touchAction: manipulation removes double-tap-zoom delay
+                        style={{ backgroundColor: '#0B0F19', pointerEvents: 'auto', touchAction: 'manipulation' }}
                       ></iframe>
                     </div>
 

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PORTFOLIO_ITEMS, LINKS } from '../constants';
 import { ArrowUpRight, Instagram } from 'lucide-react';
@@ -5,8 +6,8 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // Switch to 'captioned' version which is more robust for mobile playback and touch events
-  return `${baseUrl}embed/captioned/`;
+  // Use standard embed mode (+ params) to remove caption chrome, maximizing the video 'Play' touch target size on mobile
+  return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
 };
 
 export const Portfolio: React.FC = () => {
@@ -53,7 +54,8 @@ export const Portfolio: React.FC = () => {
                   scrolling="no"
                   title={`${item.title} - ${item.category} AI Video`}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
-                  style={{ backgroundColor: '#0B0F19', pointerEvents: 'auto' }}
+                  // touchAction: manipulation removes double-tap-zoom delay, making play button responsive
+                  style={{ backgroundColor: '#0B0F19', pointerEvents: 'auto', touchAction: 'manipulation' }}
                 ></iframe>
               </div>
 
