@@ -22,6 +22,7 @@ export const Hero: React.FC = () => {
           muted 
           playsInline
           poster={ASSETS.HERO_BG}
+          aria-label="Abstract AI Technology Background Video"
           className="w-full h-full object-cover opacity-40 mix-blend-luminosity" // Reduced opacity and luminosity for professional feel
         >
           <source src={ASSETS.HERO_VIDEO} type="video/mp4" />

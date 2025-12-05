@@ -52,7 +52,7 @@ export const Portfolio: React.FC = () => {
                   allowFullScreen={true}
                   frameBorder="0"
                   scrolling="no"
-                  title={item.title}
+                  title={`${item.title} - ${item.category} AI Video`}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
                   style={{ backgroundColor: '#0B0F19' }}
                 ></iframe>
