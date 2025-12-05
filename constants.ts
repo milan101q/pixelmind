@@ -2,7 +2,7 @@
 import { Instagram, Cpu, Zap, BarChart3, Video, Globe } from 'lucide-react';
 
 export const LINKS = {
-  INSTAGRAM: "https://www.instagram.com/pixelmind.agency_/",
+  INSTAGRAM: "https://www.instagram.com/pixelmind.art_/",
 };
 
 export const ASSETS = {
