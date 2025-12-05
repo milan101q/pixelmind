@@ -6,7 +6,8 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  return `${baseUrl}embed`;
+  // Using 'embed/captioned/' is often more robust for mobile playback than standard 'embed'
+  return `${baseUrl}embed/captioned/`;
 };
 
 export const Portfolio: React.FC = () => {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -511,7 +512,8 @@
             }
             const cleanUrl = url.split('?')[0];
             const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-            return `${baseUrl}embed`;
+            // USE CAPTIONED EMBED for better mobile compatibility
+            return `${baseUrl}embed/captioned/`;
           } catch (e) {
             return '';
           }
