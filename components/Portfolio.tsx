@@ -6,8 +6,8 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // Using 'embed/captioned/' is often more robust for mobile playback than standard 'embed'
-  return `${baseUrl}embed/captioned/`;
+  // Using standard 'embed/' with query params is often most reliable for Reels on mobile
+  return `${baseUrl}embed/?utm_source=ig_embed&amp;utm_campaign=loading`;
 };
 
 export const Portfolio: React.FC = () => {
@@ -43,10 +43,10 @@ export const Portfolio: React.FC = () => {
               key={item.id}
               className="group relative flex flex-col gap-5"
             >
-              {/* Iframe Container - Cleaner Borders */}
+              {/* Iframe Container - Aspect Ratio fixed to 9:16 for Reels */}
               <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0B0F19] shadow-2xl transition-all duration-300 group-hover:border-cyan-500/30">
                 <iframe 
-                  className="w-full aspect-[9/13] md:aspect-[9/14] opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full aspect-[9/16]" 
                   src={getEmbedUrl(item.instagramUrl)} 
                   allowTransparency={true}
                   allowFullScreen={true}
@@ -55,6 +55,7 @@ export const Portfolio: React.FC = () => {
                   title={item.title}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   style={{ backgroundColor: '#0B0F19' }}
+                  loading="lazy"
                 ></iframe>
               </div>
 

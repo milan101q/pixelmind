@@ -504,19 +504,10 @@
 
         // Security: Helper to convert standard IG URL to Embed URL
         const getEmbedUrl = (url) => {
-          if (!url) return '';
-          try {
-            const urlObj = new URL(url);
-            if (!urlObj.hostname.includes('instagram.com')) {
-               return '';
-            }
-            const cleanUrl = url.split('?')[0];
-            const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-            // USE CAPTIONED EMBED for better mobile compatibility
-            return `${baseUrl}embed/captioned/`;
-          } catch (e) {
-            return '';
-          }
+          const cleanUrl = url.split('?')[0];
+          const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
+          // Using standard 'embed/' with query params is often most reliable for Reels on mobile
+          return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
         };
 
         return (
@@ -550,7 +541,7 @@
                   >
                     <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0B0F19] shadow-2xl transition-all duration-300 group-hover:border-cyan-500/30">
                       <iframe 
-                        className="w-full aspect-[9/13] md:aspect-[9/14] opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                        className="w-full aspect-[9/16]" 
                         src={getEmbedUrl(item.instagramUrl)} 
                         allowTransparency="true"
                         allowFullScreen="true"
