@@ -508,9 +508,9 @@
         const getEmbedUrl = (url) => {
           const cleanUrl = url.split('?')[0];
           const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-          // MOBILE FIX: Use simple '/embed/' without params to avoid strict blocking, 
-          // and relies on system player which is often more robust on mobile.
-          return `${baseUrl}embed/`;
+          // MOBILE FIX: Use 'embed/captioned/' as it provides a more robust player wrapper 
+          // that handles mobile touch events and autoplay policies better than the raw embed.
+          return `${baseUrl}embed/captioned/`;
         };
 
         return (
@@ -551,7 +551,6 @@
                         allowFullScreen={true}
                         frameBorder="0"
                         scrolling="no"
-                        playsInline={true}
                         title={`${item.title} - ${item.category} AI Video`}
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
                         // touchAction: manipulation removes double-tap-zoom delay

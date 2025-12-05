@@ -6,9 +6,9 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // MOBILE FIX: Use simple '/embed/' without params. This avoids strict tracking blocking 
-  // and often delegates better to the system video player on mobile webviews.
-  return `${baseUrl}embed/`;
+  // MOBILE FIX: Use 'embed/captioned/' as it provides a more robust player wrapper 
+  // that handles mobile touch events and autoplay policies better than the raw embed.
+  return `${baseUrl}embed/captioned/`;
 };
 
 export const Portfolio: React.FC = () => {
