@@ -1,14 +1,67 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PORTFOLIO_ITEMS, LINKS } from '../constants';
-import { ArrowUpRight, Instagram } from 'lucide-react';
+import { ArrowUpRight, Instagram, Loader2 } from 'lucide-react';
 
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // MOBILE FIX: Use 'embed/captioned/' as it provides a more robust player wrapper 
-  // that handles mobile touch events and autoplay policies better than the raw embed.
-  return `${baseUrl}embed/captioned/`;
+  // Using standard embed with tracking params often resolves mobile playback glitches
+  return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
+};
+
+// Lazy Load Component to prevent mobile browsers from crashing with too many iframes
+const LazyIframe = ({ url, title }: { url: string, title: string }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // Load 200px before appearing
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full aspect-[9/16] bg-[#0B0F19] flex items-center justify-center">
+      {isVisible ? (
+        <iframe 
+          className="w-full h-full" 
+          src={url} 
+          allowTransparency={true}
+          allowFullScreen={true}
+          frameBorder="0"
+          scrolling="no"
+          title={title}
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+          playsInline={true}
+          style={{ 
+            backgroundColor: '#0B0F19',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+          }}
+        ></iframe>
+      ) : (
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Loader2 className="w-6 h-6 text-cyan-500 animate-spin" />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export const Portfolio: React.FC = () => {
@@ -46,18 +99,10 @@ export const Portfolio: React.FC = () => {
             >
               {/* Iframe Container - Aspect Ratio fixed to 9:16 for Reels */}
               <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0B0F19] shadow-2xl transition-all duration-300 group-hover:border-cyan-500/30">
-                <iframe 
-                  className="w-full aspect-[9/16]" 
-                  src={getEmbedUrl(item.instagramUrl)} 
-                  allowTransparency={true}
-                  allowFullScreen={true}
-                  frameBorder="0"
-                  scrolling="no"
-                  title={`${item.title} - ${item.category} AI Video`}
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; playsinline" 
-                  // touchAction: manipulation removes double-tap-zoom delay, making play button responsive
-                  style={{ backgroundColor: '#0B0F19', pointerEvents: 'auto', touchAction: 'manipulation' }}
-                ></iframe>
+                <LazyIframe 
+                  url={getEmbedUrl(item.instagramUrl)} 
+                  title={`${item.title} - ${item.category} AI Video`} 
+                />
               </div>
 
               <div className="px-1">
