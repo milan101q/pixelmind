@@ -52,6 +52,7 @@ export const Portfolio: React.FC = () => {
                   frameBorder="0"
                   scrolling="no"
                   title={item.title}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   style={{ backgroundColor: '#0B0F19' }}
                 ></iframe>
               </div>
