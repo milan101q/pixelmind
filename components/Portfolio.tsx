@@ -42,7 +42,7 @@ const LazyIframe = ({ url, title }: { url: string, title: string }) => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full aspect-[9/16] bg-[#0B0F19] flex items-center justify-center">
+    <div ref={containerRef} className="relative w-full aspect-[4/5] bg-[#0B0F19] flex items-center justify-center">
       {isVisible ? (
         <iframe 
           className="w-full h-full opacity-0 animate-fade-in transition-opacity duration-700 ease-in" 
@@ -58,7 +58,6 @@ const LazyIframe = ({ url, title }: { url: string, title: string }) => {
           }}
           title={title}
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-          playsInline={true}
           loading="lazy" // Native lazy loading as fallback
         ></iframe>
       ) : (
@@ -104,7 +103,7 @@ export const Portfolio: React.FC = () => {
               key={item.id}
               className="group relative flex flex-col gap-5"
             >
-              {/* Iframe Container - Aspect Ratio fixed to 9:16 for Reels */}
+              {/* Iframe Container - Aspect Ratio fixed to 4:5 for Compact Look */}
               <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0B0F19] shadow-2xl transition-all duration-300 group-hover:border-cyan-500/30">
                 <LazyIframe 
                   url={getEmbedUrl(item.instagramUrl)} 

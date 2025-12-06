@@ -221,6 +221,14 @@
           instagramUrl: 'https://www.instagram.com/p/DP-za1_jVJ9/',
           description: ''
       },
+        {
+          id: '42',
+          title: 'Car Dealership',
+          category: 'Nova Autoland',
+          instagramUrl: 'https://www.instagram.com/p/DR5yhSfDpAq',
+          description: ''
+      },
+      
        {
           id: '5',
           title: 'Car Dealership',
@@ -256,6 +264,13 @@
           instagramUrl: 'https://www.instagram.com/p/DP5jszajZxx/',
           description: ''
       },
+      {
+          id: '111',
+          title: 'Car Dealership',
+          category: 'Nova Autoland',
+          instagramUrl: 'https://www.instagram.com/p/DR7d6whjhxv/',
+          description: ''
+      },
        {
           id: '10',
           title: 'Luxury Transportation',
@@ -265,7 +280,7 @@
       },
        {
           id: '11',
-          title: 'Luxury Transportation',
+          title: 'Automotive Services',
           category: 'Dignity Pro Limousine',
           instagramUrl: 'https://www.instagram.com/reel/DQ5l9MJjETc/',
           description: ''
@@ -428,7 +443,7 @@
               </h1>
 
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-12 leading-relaxed font-normal">
-                We craft advanced AI video solutions that support scalable business growth.
+                We craft advanced AI video solutions and advertising visuals that support scalable business growth.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -528,7 +543,7 @@
         }, []);
 
         return (
-          <div ref={containerRef} className="relative w-full aspect-[9/16] bg-[#0B0F19] flex items-center justify-center">
+          <div ref={containerRef} className="relative w-full aspect-[4/5] bg-[#0B0F19] flex items-center justify-center">
             {isVisible ? (
               <iframe 
                 className="w-full h-full opacity-0 animate-fade-in transition-opacity duration-700 ease-in" 
@@ -544,7 +559,6 @@
                 }}
                 title={title}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-                playsInline={true}
                 loading="lazy"
               ></iframe>
             ) : (

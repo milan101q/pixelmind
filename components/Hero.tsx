@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-12 leading-relaxed font-normal">
-          We craft advanced AI video solutions that support scalable business growth.
+          We craft advanced AI video solutions and advertising visuals that support scalable business growth.
         </p>
 
         {/* CTAs - Sharper, cleaner */}
