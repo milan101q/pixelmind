@@ -38,7 +38,8 @@ export const DEALERSHIP_PACKAGES = [
     period: "/month",
     description: "Perfect for dealers who want consistent content without the stress.",
     features: [
-      "12 carousel posts (3 per week, 3 photos each)",
+      "12 carousel posts (3 per week)",
+      "3 photos per carousel post",
       "8 videos (2 per week)",
       "Captions + Hashtags",
       "Posting included",
@@ -52,7 +53,8 @@ export const DEALERSHIP_PACKAGES = [
     period: "/month",
     description: "Ideal for dealerships ready to scale their visibility and boost sales.",
     features: [
-      "16 carousel posts (4 per week, 3 photos each)",
+      "16 carousel posts (4 per week)",
+      "4 photos per carousel post",
       "12 videos (3 per week)",
       "Captions + Hashtags",
       "Paid ads optimization",
