@@ -176,10 +176,6 @@ export const Contact: React.FC = () => {
                   {result === 'error' && (
                     <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
                   )}
-                  
-                  <p className="text-xs text-slate-600 text-center">
-                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                  </p>
                 </form>
               )}
             </div>
