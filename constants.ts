@@ -31,6 +31,38 @@ export const SERVICES = [
   },
 ];
 
+export const DEALERSHIP_PACKAGES = [
+  {
+    name: "Basic",
+    price: "$300",
+    period: "/month",
+    description: "Perfect for dealers who want consistent content without the stress.",
+    features: [
+      "12 carousel posts (3 per week)",
+      "8 videos (2 per week)",
+      "Captions + Hashtags",
+      "Posting included",
+      "Captions and photo overlays aligned with CARFAX highlights"
+    ],
+    recommended: false
+  },
+  {
+    name: "Plus",
+    price: "$450",
+    period: "/month",
+    description: "Ideal for dealerships ready to scale their visibility and boost sales.",
+    features: [
+      "16 carousel posts (4 per week)",
+      "12 videos (3 per week)",
+      "Captions + Hashtags",
+      "Paid ads optimization",
+      "Posting included",
+      "Captions and photo overlays aligned with CARFAX highlights"
+    ],
+    recommended: true
+  }
+];
+
 export const PORTFOLIO_ITEMS = [
   {
     id: '1',

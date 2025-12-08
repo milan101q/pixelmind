@@ -54,6 +54,7 @@ export const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-10">
           <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors tracking-wide">Services</button>
           <button onClick={() => scrollToSection('work')} className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors tracking-wide">Work</button>
+          <button onClick={() => scrollToSection('contact')} className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors tracking-wide">Contact</button>
           <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors tracking-wide">About</button>
           
           <a 
@@ -63,7 +64,7 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-2 px-6 py-2.5 bg-white text-black rounded-lg font-bold text-sm hover:bg-cyan-50 transition-all transform hover:-translate-y-0.5 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
           >
             <Instagram size={18} />
-            Connect
+            IG
           </a>
         </div>
 
@@ -81,6 +82,7 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 w-full bg-[#030712] border-b border-white/5 p-6 flex flex-col gap-6 animate-in slide-in-from-top-5 shadow-2xl">
           <button onClick={() => scrollToSection('services')} className="text-lg text-slate-300 text-left font-medium">Services</button>
           <button onClick={() => scrollToSection('work')} className="text-lg text-slate-300 text-left font-medium">Work</button>
+          <button onClick={() => scrollToSection('contact')} className="text-lg text-slate-300 text-left font-medium">Contact</button>
           <button onClick={() => scrollToSection('about')} className="text-lg text-slate-300 text-left font-medium">About</button>
           <a 
             href={LINKS.INSTAGRAM} 
