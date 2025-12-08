@@ -10,18 +10,54 @@ export const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<null | 'success' | 'error'>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear errors when user starts typing again
+    if (errorMessage) setErrorMessage(null);
+  };
+
+  // Security: Sanitize input to prevent XSS/Injection
+  const sanitizeInput = (input: string) => {
+    return input.replace(/<[^>]*>?/gm, "").trim();
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setResult(null);
+    setErrorMessage(null);
+
+    // 1. Sanitize Data
+    const sanitizedData = {
+      name: sanitizeInput(formData.name),
+      email: formData.email.trim(),
+      message: sanitizeInput(formData.message)
+    };
+
+    // 2. Validate Data
+    if (sanitizedData.name.length < 2) {
+      setErrorMessage("Name must be at least 2 characters long.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(sanitizedData.email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (sanitizedData.message.length < 10) {
+      setErrorMessage("Message must be at least 10 characters long.");
+      setIsSubmitting(false);
+      return;
+    }
 
     const object = {
-      ...formData,
+      ...sanitizedData,
       access_key: "87774ba7-dcf7-411b-9e40-5e0a81ae5151"
     };
     const json = JSON.stringify(object);
@@ -42,10 +78,12 @@ export const Contact: React.FC = () => {
         setFormData({ name: '', email: '', message: '' });
       } else {
         setResult('error');
+        setErrorMessage(res.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error(error);
       setResult('error');
+      setErrorMessage("Network connection failed. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -112,6 +150,12 @@ export const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {errorMessage && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm text-center">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
@@ -172,10 +216,6 @@ export const Contact: React.FC = () => {
                       </>
                     )}
                   </button>
-                  
-                  {result === 'error' && (
-                    <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
-                  )}
                 </form>
               )}
             </div>
