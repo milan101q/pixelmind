@@ -6,8 +6,8 @@ import { ArrowUpRight, Instagram, Loader2 } from 'lucide-react';
 const getEmbedUrl = (url: string) => {
   const cleanUrl = url.split('?')[0];
   const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-  // Using standard embed with tracking params often resolves mobile playback glitches
-  return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
+  // Switch to captioned embed which serves a more robust player for mobile touch events
+  return `${baseUrl}embed/captioned/?utm_source=ig_embed&utm_campaign=loading`;
 };
 
 // Optimized Lazy Load Component
@@ -58,7 +58,7 @@ const LazyIframe = ({ url, title }: { url: string, title: string }) => {
           }}
           title={title}
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-          loading="lazy" // Native lazy loading as fallback
+          // Removed loading="lazy" to ensure IntersectionObserver logic takes precedence without mobile conflicts
         ></iframe>
       ) : (
         <div className="flex flex-col items-center justify-center gap-2 absolute inset-0 z-10">

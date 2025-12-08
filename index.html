@@ -634,7 +634,8 @@
       const getEmbedUrl = (url) => {
         const cleanUrl = url.split('?')[0];
         const baseUrl = cleanUrl.endsWith('/') ? cleanUrl : `${cleanUrl}/`;
-        return `${baseUrl}embed/?utm_source=ig_embed&utm_campaign=loading`;
+        // Use captioned embed for better mobile touch compatibility
+        return `${baseUrl}embed/captioned/?utm_source=ig_embed&utm_campaign=loading`;
       };
 
       // LazyIframe Component with Mobile Optimization
@@ -685,7 +686,7 @@
                 }}
                 title={title}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-                loading="lazy"
+                // Removed loading="lazy" to avoid conflicts with IntersectionObserver on mobile
               ></iframe>
             ) : (
               <div className="flex flex-col items-center justify-center gap-2 absolute inset-0 z-10">
