@@ -44,7 +44,7 @@ export const DEALERSHIP_PACKAGES = [
       "Captions + Hashtags",
       "Posting included",
       "Captions and photo overlays aligned with CARFAX highlights",
-      "Also posted on @pixelmind.art_"
+      "Also posted on PixelMind page"
     ],
     recommended: false
   },
@@ -61,7 +61,7 @@ export const DEALERSHIP_PACKAGES = [
       "Paid ads optimization",
       "Posting included",
       "Captions and photo overlays aligned with CARFAX highlights",
-      "Also posted on @pixelmind.art_"
+      "Also posted on PixelMind page"
     ],
     recommended: true
   }
