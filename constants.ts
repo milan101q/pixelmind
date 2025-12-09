@@ -43,7 +43,8 @@ export const DEALERSHIP_PACKAGES = [
       "8 videos (2 per week)",
       "Captions + Hashtags",
       "Posting included",
-      "Captions and photo overlays aligned with CARFAX highlights"
+      "Captions and photo overlays aligned with CARFAX highlights",
+      "Also posted on @pixelmind.art_"
     ],
     recommended: false
   },
@@ -59,7 +60,8 @@ export const DEALERSHIP_PACKAGES = [
       "Captions + Hashtags",
       "Paid ads optimization",
       "Posting included",
-      "Captions and photo overlays aligned with CARFAX highlights"
+      "Captions and photo overlays aligned with CARFAX highlights",
+      "Also posted on @pixelmind.art_"
     ],
     recommended: true
   }
