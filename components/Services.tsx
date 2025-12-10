@@ -44,7 +44,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Specialized Packages Section */}
-        <div className="max-w-5xl mx-auto">
+        <div id="dealership-packages" className="max-w-5xl mx-auto scroll-mt-32">
           <div className="text-center mb-16">
             <span className="inline-block py-1 px-3 rounded-full bg-cyan-950/30 border border-cyan-500/20 text-cyan-400 text-xs font-bold tracking-widest uppercase mb-4">
               Automotive Industry Special

@@ -11,6 +11,13 @@ export const Hero: React.FC = () => {
     }
   };
 
+  const scrollToDealerships = () => {
+    const element = document.getElementById('dealership-packages');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712]">
       
@@ -63,15 +70,13 @@ export const Hero: React.FC = () => {
 
         {/* CTAs - Sharper, cleaner */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a 
-            href={LINKS.INSTAGRAM}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={scrollToDealerships}
             className="w-full sm:w-auto px-8 py-4 bg-white text-[#030712] font-bold text-base rounded-lg hover:bg-cyan-50 hover:-translate-y-1 transition-all shadow-[0_0_25px_rgba(255,255,255,0.1)] flex items-center justify-center gap-2"
           >
-            Start Project
+            Exclusive Dealership Plans
             <ArrowRight size={18} />
-          </a>
+          </button>
           <button 
             onClick={scrollToWork}
             className="w-full sm:w-auto px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold text-base rounded-lg hover:bg-white/10 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
