@@ -3,6 +3,7 @@ import { Instagram, Cpu, Zap, BarChart3, Video, Globe } from 'lucide-react';
 
 export const LINKS = {
   INSTAGRAM: "https://www.instagram.com/pixelmind.art_/",
+  MARKETPLACE_PROFILE: "https://www.facebook.com/marketplace/profile/61559047695077/"
 };
 
 export const ASSETS = {
@@ -36,14 +37,14 @@ export const DEALERSHIP_PACKAGES = [
     name: "Basic",
     price: "$295",
     period: "/month",
-    description: "Perfect for dealers who want consistent content without the stress.",
+    description: "Effortlessly maintain a professional feed with consistent, high-quality visuals that build trust without adding to your workload.",
     features: [
       "12 carousel posts (3 per week)",
-      "3 photos per carousel post",
+      "3 photos per carousel",
       "8 videos (2 per week)",
       "Captions + Hashtags",
       "Posting included",
-      "Captions and photo overlays aligned with CARFAX highlights",
+      "Captions & photo overlays aligned with CARFAX highlights",
       "Also posted on PixelMind page"
     ],
     recommended: false
@@ -52,18 +53,33 @@ export const DEALERSHIP_PACKAGES = [
     name: "Plus",
     price: "$449",
     period: "/month",
-    description: "Ideal for dealerships ready to scale their visibility and boost sales.",
+    description: "Supercharge your inventory visibility with higher post frequency and ad-ready content designed to capture leads.",
     features: [
       "16 carousel posts (4 per week)",
-      "4 photos per carousel post",
+      "4 photos per carousel",
       "12 videos (3 per week)",
       "Captions + Hashtags",
       "Paid ads optimization",
       "Posting included",
-      "Captions and photo overlays aligned with CARFAX highlights",
+      "Captions & photo overlays aligned with CARFAX highlights",
       "Also posted on PixelMind page"
     ],
     recommended: true
+  },
+  {
+    name: "Marketplace Domination",
+    price: "$695",
+    period: "/month",
+    description: "Maximum exposure, more leads, and full Marketplace management handled for you.",
+    features: [
+      "Includes all content creation from the Plus plan",
+      "Posting all inventory to Facebook Marketplace",
+      "Posting each vehicle on 20+ local buy/sell groups",
+      "Responding to Facebook Marketplace inquiries",
+      "Sending qualified leads directly to the dealership",
+      "Managed by expert profile (100+ cars sold since 2024)"
+    ],
+    recommended: false
   }
 ];
 

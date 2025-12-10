@@ -143,12 +143,15 @@
         Send,
         CheckCircle,
         Mail,
-        MessageSquare
+        MessageSquare,
+        ArrowLeftRight,
+        ExternalLink
       } from 'lucide-react';
 
       // --- CONSTANTS ---
       const LINKS = {
         INSTAGRAM: "https://www.instagram.com/pixelmind.art_/",
+        MARKETPLACE_PROFILE: "https://www.facebook.com/marketplace/profile/61559047695077/"
       };
 
       const ASSETS = {
@@ -181,14 +184,14 @@
           name: "Basic",
           price: "$295",
           period: "/month",
-          description: "Perfect for dealers who want consistent content without the stress.",
+          description: "Effortlessly maintain a professional feed with consistent, high-quality visuals that build trust without adding to your workload.",
           features: [
             "12 carousel posts (3 per week)",
-            "3 photos per carousel post",
+            "3 photos per carousel",
             "8 videos (2 per week)",
             "Captions + Hashtags",
             "Posting included",
-            "Captions and photo overlays aligned with CARFAX highlights",
+            "Captions & photo overlays aligned with CARFAX highlights",
             "Also posted on PixelMind page"
           ],
           recommended: false
@@ -197,18 +200,33 @@
           name: "Plus",
           price: "$449",
           period: "/month",
-          description: "Ideal for dealerships ready to scale their visibility and boost sales.",
+          description: "Supercharge your inventory visibility with higher post frequency and ad-ready content designed to capture leads.",
           features: [
             "16 carousel posts (4 per week)",
-            "4 photos per carousel post",
+            "4 photos per carousel",
             "12 videos (3 per week)",
             "Captions + Hashtags",
             "Paid ads optimization",
             "Posting included",
-            "Captions and photo overlays aligned with CARFAX highlights",
+            "Captions & photo overlays aligned with CARFAX highlights",
             "Also posted on PixelMind page"
           ],
           recommended: true
+        },
+        {
+          name: "Marketplace Domination",
+          price: "$695",
+          period: "/month",
+          description: "Maximum exposure, more leads, and full Marketplace management handled for you.",
+          features: [
+            "Includes all content creation from the Plus plan",
+            "Posting all inventory to Facebook Marketplace",
+            "Posting each vehicle on 20+ local buy/sell groups",
+            "Responding to Facebook Marketplace inquiries",
+            "Sending qualified leads directly to the dealership",
+            "Managed by expert profile (100+ cars sold since 2024)"
+          ],
+          recommended: false
         }
       ];
 
@@ -563,7 +581,7 @@
               </div>
 
               {/* Dealership Packages */}
-              <div id="dealership-packages" className="max-w-5xl mx-auto scroll-mt-32">
+              <div id="dealership-packages" className="max-w-7xl mx-auto scroll-mt-32">
                 <div className="text-center mb-16">
                   <span className="inline-block py-1 px-3 rounded-full bg-cyan-950/30 border border-cyan-500/20 text-cyan-400 text-xs font-bold tracking-widest uppercase mb-4">
                     Automotive Industry Special
@@ -576,7 +594,7 @@
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {DEALERSHIP_PACKAGES.map((pkg, index) => {
                     const isSelected = selectedPackage === pkg.name;
                     const isAnySelected = selectedPackage !== null;
@@ -606,13 +624,26 @@
                           <span className="text-4xl font-extrabold text-white">{pkg.price}</span>
                           <span className="text-slate-500 font-medium">{pkg.period}</span>
                         </div>
-                        <p className="text-slate-400 text-sm mb-8 h-10">{pkg.description}</p>
+                        <p className="text-slate-400 text-sm mb-6 h-auto min-h-[40px]">{pkg.description}</p>
 
                         <ul className="space-y-4 mb-8 flex-1">
                           {pkg.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
                               <Check size={18} className={`${isSelected ? 'text-cyan-300' : 'text-cyan-400'} shrink-0 mt-0.5`} />
-                              <span>{feature}</span>
+                              <span className="flex-1">
+                                {feature}
+                                {feature.includes("100+ cars sold") && (
+                                   <a 
+                                     href={LINKS.MARKETPLACE_PROFILE} 
+                                     target="_blank" 
+                                     rel="noopener noreferrer" 
+                                     className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 ml-1.5 font-medium underline-offset-4 hover:underline"
+                                     onClick={(e) => e.stopPropagation()}
+                                   >
+                                     View Profile <ExternalLink size={12} />
+                                   </a>
+                                )}
+                              </span>
                             </li>
                           ))}
                         </ul>

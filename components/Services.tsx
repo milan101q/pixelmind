@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { SERVICES, DEALERSHIP_PACKAGES, LINKS } from '../constants';
-import { Check, ArrowRight, Instagram, Mail } from 'lucide-react';
+import { Check, Instagram, Mail, ExternalLink } from 'lucide-react';
 
 export const Services: React.FC = () => {
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
@@ -44,7 +44,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Specialized Packages Section */}
-        <div id="dealership-packages" className="max-w-5xl mx-auto scroll-mt-32">
+        <div id="dealership-packages" className="max-w-7xl mx-auto scroll-mt-32">
           <div className="text-center mb-16">
             <span className="inline-block py-1 px-3 rounded-full bg-cyan-950/30 border border-cyan-500/20 text-cyan-400 text-xs font-bold tracking-widest uppercase mb-4">
               Automotive Industry Special
@@ -57,7 +57,7 @@ export const Services: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {DEALERSHIP_PACKAGES.map((pkg, index) => {
               const isSelected = selectedPackage === pkg.name;
               const isAnySelected = selectedPackage !== null;
@@ -87,13 +87,27 @@ export const Services: React.FC = () => {
                     <span className="text-4xl font-extrabold text-white">{pkg.price}</span>
                     <span className="text-slate-500 font-medium">{pkg.period}</span>
                   </div>
-                  <p className="text-slate-400 text-sm mb-8 h-10">{pkg.description}</p>
+                  <p className="text-slate-400 text-sm mb-6 h-auto min-h-[40px]">{pkg.description}</p>
 
                   <ul className="space-y-4 mb-8 flex-1">
                     {pkg.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
                         <Check size={18} className={`${isSelected ? 'text-cyan-300' : 'text-cyan-400'} shrink-0 mt-0.5`} />
-                        <span>{feature}</span>
+                        <span className="flex-1">
+                          {feature}
+                          {/* Add Link for specific feature */}
+                          {feature.includes("100+ cars sold") && (
+                             <a 
+                               href={LINKS.MARKETPLACE_PROFILE} 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 ml-1.5 font-medium underline-offset-4 hover:underline"
+                               onClick={(e) => e.stopPropagation()}
+                             >
+                               View Profile <ExternalLink size={12} />
+                             </a>
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
