@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { SERVICES, DEALERSHIP_PACKAGES, LINKS } from '../constants';
-import { Check, Instagram, Mail, ExternalLink } from 'lucide-react';
+import { Check, Instagram, Mail, ExternalLink, Facebook } from 'lucide-react';
 
 export const Services: React.FC = () => {
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
@@ -81,6 +81,22 @@ export const Services: React.FC = () => {
                       RECOMMENDED
                     </div>
                   )}
+
+                  {/* Platforms Badge Section */}
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    {pkg.platforms.includes("Instagram") && (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-pink-500/30 bg-pink-900/10 text-pink-400 text-[10px] font-bold uppercase tracking-wider">
+                        <Instagram size={12} />
+                        Instagram
+                      </div>
+                    )}
+                    {pkg.platforms.includes("Facebook Marketplace") && (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-blue-500/30 bg-blue-900/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                        <Facebook size={12} />
+                        Facebook Marketplace
+                      </div>
+                    )}
+                  </div>
 
                   <h4 className={`text-xl font-bold mb-2 transition-colors ${isSelected ? 'text-cyan-400' : 'text-white'}`}>{pkg.name}</h4>
                   <div className="flex items-baseline gap-1 mb-4">

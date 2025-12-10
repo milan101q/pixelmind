@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -145,7 +146,8 @@
         Mail,
         MessageSquare,
         ArrowLeftRight,
-        ExternalLink
+        ExternalLink,
+        Facebook
       } from 'lucide-react';
 
       // --- CONSTANTS ---
@@ -184,7 +186,8 @@
           name: "Basic",
           price: "$295",
           period: "/month",
-          description: "Effortlessly maintain a professional feed with consistent, high-quality visuals that build trust without adding to your workload.",
+          description: "Consistent, high-quality visuals that build trust without the workload.",
+          platforms: ["Instagram"],
           features: [
             "12 carousel posts (3 per week)",
             "3 photos per carousel",
@@ -200,7 +203,8 @@
           name: "Plus",
           price: "$449",
           period: "/month",
-          description: "Supercharge your inventory visibility with higher post frequency and ad-ready content designed to capture leads.",
+          description: "Boost visibility with frequent, ad-ready content designed to capture leads.",
+          platforms: ["Instagram"],
           features: [
             "16 carousel posts (4 per week)",
             "4 photos per carousel",
@@ -211,13 +215,14 @@
             "Captions & photo overlays aligned with CARFAX highlights",
             "Also posted on PixelMind page"
           ],
-          recommended: true
+          recommended: false
         },
         {
-          name: "Marketplace Domination",
+          name: "Elite",
           price: "$695",
           period: "/month",
           description: "Maximum exposure, more leads, and full Marketplace management handled for you.",
+          platforms: ["Instagram", "Facebook Marketplace"],
           features: [
             "Includes all content creation from the Plus plan",
             "Posting all inventory to Facebook Marketplace",
@@ -226,7 +231,7 @@
             "Sending qualified leads directly to the dealership",
             "Managed by expert profile (100+ cars sold since 2024)"
           ],
-          recommended: false
+          recommended: true
         }
       ];
 
@@ -618,6 +623,22 @@
                             RECOMMENDED
                           </div>
                         )}
+
+                         {/* Platforms Badge Section */}
+                         <div className="flex flex-wrap items-center gap-2 mb-4">
+                            {pkg.platforms.includes("Instagram") && (
+                              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-pink-500/30 bg-pink-900/10 text-pink-400 text-[10px] font-bold uppercase tracking-wider">
+                                <Instagram size={12} />
+                                Instagram
+                              </div>
+                            )}
+                            {pkg.platforms.includes("Facebook Marketplace") && (
+                              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-blue-500/30 bg-blue-900/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                                <Facebook size={12} />
+                                Facebook Marketplace
+                              </div>
+                            )}
+                          </div>
 
                         <h4 className={`text-xl font-bold mb-2 transition-colors ${isSelected ? 'text-cyan-400' : 'text-white'}`}>{pkg.name}</h4>
                         <div className="flex items-baseline gap-1 mb-4">

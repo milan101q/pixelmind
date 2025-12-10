@@ -37,7 +37,8 @@ export const DEALERSHIP_PACKAGES = [
     name: "Basic",
     price: "$295",
     period: "/month",
-    description: "Effortlessly maintain a professional feed with consistent, high-quality visuals that build trust without adding to your workload.",
+    description: "Consistent, high-quality visuals that build trust without the workload.",
+    platforms: ["Instagram"],
     features: [
       "12 carousel posts (3 per week)",
       "3 photos per carousel",
@@ -53,7 +54,8 @@ export const DEALERSHIP_PACKAGES = [
     name: "Plus",
     price: "$449",
     period: "/month",
-    description: "Supercharge your inventory visibility with higher post frequency and ad-ready content designed to capture leads.",
+    description: "Boost visibility with frequent, ad-ready content designed to capture leads.",
+    platforms: ["Instagram"],
     features: [
       "16 carousel posts (4 per week)",
       "4 photos per carousel",
@@ -64,13 +66,14 @@ export const DEALERSHIP_PACKAGES = [
       "Captions & photo overlays aligned with CARFAX highlights",
       "Also posted on PixelMind page"
     ],
-    recommended: true
+    recommended: false
   },
   {
-    name: "Marketplace Domination",
+    name: "Elite",
     price: "$695",
     period: "/month",
     description: "Maximum exposure, more leads, and full Marketplace management handled for you.",
+    platforms: ["Instagram", "Facebook Marketplace"],
     features: [
       "Includes all content creation from the Plus plan",
       "Posting all inventory to Facebook Marketplace",
@@ -79,7 +82,7 @@ export const DEALERSHIP_PACKAGES = [
       "Sending qualified leads directly to the dealership",
       "Managed by expert profile (100+ cars sold since 2024)"
     ],
-    recommended: false
+    recommended: true
   }
 ];
 
