@@ -16,18 +16,18 @@ export const ASSETS = {
 
 export const SERVICES = [
   {
-    title: "AI Video Generation",
-    description: "State-of-the-art generative models (Sora, Runway, Veo) creating surreal, hyper-realistic visuals.",
+    title: "AI-Powered Content",
+    description: "Automated creation of high-quality carousels and videos that keep your inventory looking premium and your feed consistent.",
     icon: Cpu,
   },
   {
-    title: "Viral Short-Form",
-    description: "Expertly crafted Reels/TikToks optimized for algorithm dominance and maximum engagement.",
+    title: "Growth & Ad Strategy",
+    description: "Paid ad optimization combined with viral content formats to dominate local algorithms and capture qualified leads.",
     icon: Zap,
   },
   {
-    title: "Performance Strategy",
-    description: "Visual assets built on direct-response psychology to convert viewers into customers.",
+    title: "Marketplace Management",
+    description: "Complete handling of Facebook Marketplace listings and inquiries to turn passive browsers into showroom appointments.",
     icon: BarChart3,
   },
 ];
@@ -52,7 +52,7 @@ export const DEALERSHIP_PACKAGES = [
   },
   {
     name: "Plus",
-    price: "$449",
+    price: "$395",
     period: "/month",
     description: "Boost visibility with frequent, ad-ready content designed to capture leads.",
     platforms: ["Instagram"],
@@ -70,7 +70,7 @@ export const DEALERSHIP_PACKAGES = [
   },
   {
     name: "Elite",
-    price: "$695",
+    price: "$595",
     period: "/month",
     description: "Maximum exposure, more leads, and full Marketplace management handled for you.",
     platforms: ["Instagram", "Facebook Marketplace"],
