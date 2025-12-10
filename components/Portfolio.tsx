@@ -82,7 +82,7 @@ export const Portfolio: React.FC = () => {
         
         <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
           <div>
-             <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">Selected <br/><span className="text-cyan-400">Projects</span></h2>
+             <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">Sample <br/><span className="text-cyan-400">Projects</span></h2>
              <p className="text-lg text-slate-400 max-w-lg font-light">
                Discover our portfolio of AI-generated business solutions, designed to captivate and convert.
              </p>
