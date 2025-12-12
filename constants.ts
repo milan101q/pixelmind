@@ -76,8 +76,8 @@ export const DEALERSHIP_PACKAGES = [
     platforms: ["Instagram", "Facebook Marketplace"],
     features: [
       "Includes all content creation from the Plus plan",
-      "Posting all inventory to Facebook Marketplace",
-      "Posting each vehicle on 20+ local buy/sell groups",
+      "Posting 30 vehicles to Facebook Marketplace with Weekly Update",
+      "Posting the vehicles on 20+ local buy/sell groups",
       "Responding to Facebook Marketplace inquiries",
       "Sending qualified leads directly to the dealership",
       "Managed by expert profile (100+ cars sold since 2024)"
